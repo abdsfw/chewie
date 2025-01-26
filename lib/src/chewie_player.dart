@@ -144,12 +144,17 @@ class ChewieState extends State<Chewie> {
         controllerProvider,
       );
     }
-    return widget.controller.routePageBuilder!(
+    return 
+      InteractiveViewer(
+        minScale: 1,
+        maxScale: 5,
+        child:  widget.controller.routePageBuilder!(
       context,
       animation,
       secondaryAnimation,
       controllerProvider,
-    );
+    ));
+ 
   }
 
   Future<dynamic> _pushFullScreenWidget(BuildContext context) async {
