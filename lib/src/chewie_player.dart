@@ -101,10 +101,14 @@ class ChewieState extends State<Chewie> {
   ) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        alignment: Alignment.center,
-        color: Colors.black,
-        child: controllerProvider,
+      body: InteractiveViewer(
+        minScale: 1,
+        maxScale: 5,
+        child: Container(
+          alignment: Alignment.center,
+          color: Colors.black,
+          child: controllerProvider,
+        ),
       ),
     );
   }
@@ -144,17 +148,12 @@ class ChewieState extends State<Chewie> {
         controllerProvider,
       );
     }
-    return 
-      InteractiveViewer(
-        minScale: 1,
-        maxScale: 5,
-        child:  widget.controller.routePageBuilder!(
+    return widget.controller.routePageBuilder!(
       context,
       animation,
       secondaryAnimation,
       controllerProvider,
-    ));
- 
+    );
   }
 
   Future<dynamic> _pushFullScreenWidget(BuildContext context) async {
